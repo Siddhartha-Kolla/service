@@ -2,85 +2,36 @@ import React from 'react';
 import Container from '@/components/ui/container'
 import {Button} from '@/components/ui/button'
 import { LuShoppingBag } from 'react-icons/lu';
-import ProductList from '@/components/ProductList'
+import ProductList from '@/components/ProductList';
+import { useState } from 'react';
+import { useEffect } from 'react';
+import axios from 'axios';
+
 
 const hes = (e,s,t) => {
   e.preventDefault();
   console.log("HEllo World"+s+t)
 }
-const products = [
-  {
-    id: "1",
-    volume: "6L",
-    name: "HohesC Multivitaminsaft C&D",
-    price: "$3,999.00",
-    images: "/img/coca.jpg",
-  },
-  {
-    id: "2",
-    volume: "hello",
-    name: "Sony A7S III",
-    price: "$3,499.00",
-    images: "/img/FX3.png",
-  },
-  {
-    id: "3",
-    volume: "ss",
-    name: "Sony A7C",
-    price: "$1,599.00",
-    images: "/img/FX3.png",
-  },
-  {
-    id: "4",
-    volume: "ss",
-    name: "Sony A7C",
-    price: "$1,599.00",
-    images: "/img/FX3.png",
-  },
-  {
-    id: "5",
-    volume: "ss",
-    name: "Sony A7C",
-    price: "$1,599.00",
-    images: "/img/FX3.png",
-  },
-  {
-    id: "6",
-    volume: "ss",
-    name: "Sony A7C",
-    price: "$1,599.00",
-    images: "/img/FX3.png",
-  },
-  {
-    id: "7",
-    volume: "ss",
-    name: "Sony A7C",
-    price: "$1,599.00",
-    images: "/img/FX3.png",
-  },
-  {
-    id: "8",
-    volume: "ss",
-    name: "Sony A7C",
-    price: "$1,599.00",
-    images: "/img/FX3.png",
-  },{
-    id: "9",
-    volume: "ss",
-    name: "Sony A7C",
-    price: "$1,599.00",
-    images: "/img/FX3.png",
-  }
-  ,{
-    id: "10",
-    volume: "ss",
-    name: "Sony A7C",
-    price: "$1,599.00",
-    images: "/img/FX3.png",
-  }
-]
+
+const apiCall = (setProductslist) => {
+  axios.get('http://localhost:3001/categories/?category=water').then((response) => {
+    //this console.log will be in our frontend console
+    const data = response.data.data;
+    let pl = []
+    for (let i=0;i<data.length;i++) {
+      pl.push({id:i,name:data[i].NAME,ppl:data[i].PPL,volume:data[i].VOLUME,first:data[i].FIRST,second:data[i].SECOND,third: data[i].THIRD,plastic:data[i].PLASTIC,glass:data[i].GLASS,image:data[i].IMAGE,category:data[i].CATEGORY,capacity:data[i].CAPACITY})
+    }
+    setProductslist(pl)
+  })
+}
+
 
 const Warm = () => {
+  const [productslist, setProductslist] = useState([])
+
+  useEffect(() => {
+    apiCall(setProductslist)
+  }, [])
   return (
     <Container>
       <div className="space-y-10 pb-10">
@@ -101,7 +52,7 @@ const Warm = () => {
           </div>
         </div>
         <div className="flex flex-col gap-y-8 px-4 sm:px-6 lg:px-8">
-          <ProductList items={products} hes={hes} />
+          <ProductList items={productslist} hes={hes} />
         </div>
       </div>
     </Container>

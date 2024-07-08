@@ -12,7 +12,7 @@ const ProductCard = ({data,callfunc}) => {
           <CardContent className="pt-4">
             <div className="aspect-square relative bg-foreground/5 dark:bg-background rounded-lg">
               <img
-                src={data.images}
+                src={`/img/${data.image}`}
                 alt=""
                 className="aspect-square object-cover rounded-lg transition-all duration-300 group-hover:scale-105"
               />
@@ -21,11 +21,11 @@ const ProductCard = ({data,callfunc}) => {
           <CardFooter className="flex-col items-start">
             <div>
               <p className="font-semibold text-lg">{data.name}</p>
-              <p className="text-sm text-primary/80">{data.volume}</p>
+              <p className="text-sm text-primary/80">{data.volume}L</p>
             </div>
             <div className="flex items-center justify-between w-full">
               <div>
-                {data.price}
+                {data.ppl*data.volume}€
               </div>
               <div className=' grid grid-cols-3 place-items-center z-10' onClick={(e) => e.preventDefault()}>
                 <Button variant="ghost" size="icon" className="m-0" aria-label="Add to Cart" onClick={(e) => hes(e)}>

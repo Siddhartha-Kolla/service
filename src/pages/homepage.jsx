@@ -24,81 +24,91 @@ const heroinfo = {
 const products = [
   {
     id: "1",
-    volume: "6L",
+    volume: 6,
     name: "HohesC Multivitaminsaft C&D",
     price: "$3,999.00",
-    images: "/img/coca.jpg",
+    image: "coca.jpg",
+    ppl:0.5
   },
   {
     id: "2",
-    volume: "hello",
+    volume: 6,
     name: "Sony A7S III",
     price: "$3,499.00",
-    images: "/img/FX3.png",
+    image: "FX3.png",
     category: "Wasser",
+    ppl:0.5
   },
   {
     id: "3",
-    volume: "ss",
+    volume: 6,
     name: "Sony A7C",
     price: "$1,599.00",
-    images: "/img/FX3.png",
+    image: "FX3.png",
     category: "Wasser",
+    ppl:0.5
   },
   {
     id: "4",
-    volume: "ss",
+    volume: 6,
     name: "Sony A7C",
     price: "$1,599.00",
-    images: "/img/FX3.png",
+    image: "FX3.png",
     category: "Wasser",
+    ppl:0.5
   },
   {
     id: "5",
-    volume: "ss",
+    volume: 6,
     name: "Sony A7C",
     price: "$1,599.00",
-    images: "/img/FX3.png",
+    image: "FX3.png",
     category: "Wasser",
+    ppl:0.5
   },
   {
     id: "6",
-    volume: "ss",
+    volume: 6,
     name: "Sony A7C",
     price: "$1,599.00",
-    images: "/img/FX3.png",
+    image: "FX3.png",
     category: "Wasser",
+    ppl:0.5
   },
   {
     id: "7",
-    volume: "ss",
+    volume: 6,
     name: "Sony A7C",
     price: "$1,599.00",
-    images: "/img/FX3.png",
+    image: "FX3.png",
     category: "Wasser",
+    ppl:0.5
   },
   {
     id: "8",
-    volume: "ss",
+    volume: 6,
     name: "Sony A7C",
     price: "$1,599.00",
-    images: "/img/FX3.png",
+    image: "FX3.png",
     category: "Wasser",
+    ppl:0.5
   },{
     id: "9",
-    volume: "ss",
+    volume: 6,
     name: "Sony A7C",
     price: "$1,599.00",
-    images: "/img/FX3.png",
+    image: "FX3.png",
     category: "Wasser",
+    ppl:0.5
   }
   ,{
     id: "10",
-    volume: "ss",
+    volume: 6,
     name: "Sony A7C",
     price: "$1,599.00",
-    images: "/img/FX3.png",
+    image: "FX3.png",
     category: "Wasser",
+    ppl:0.5
   }
 ]
 
