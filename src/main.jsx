@@ -4,12 +4,14 @@ import App from './App.jsx'
 import './index.css'
 import { ThemeProvider } from './components/ThemeProvider.jsx'
 import Header from './components/Header.jsx'
+import Footer from './components/Footer.jsx'
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <ThemeProvider attribute="class" defaultTheme="light">
       <Header/>
-      <App />
+      <App/>
+      <Footer/>
     </ThemeProvider>
-  </React.StrictMode>,
+  </React.StrictMode>
 )

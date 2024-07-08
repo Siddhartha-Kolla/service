@@ -49,7 +49,7 @@ const components = [
 
 const CenterNavigationMenu = () => {
   return (
-    <NavigationMenu className="mx-6 flex items-center space-x-4-lg:space-x-6 hidden md:block">
+    <NavigationMenu className="mx-6 display:flex; items-center space-x-4-lg:space-x-6 hidden md:block">
       <NavigationMenuList>
         <NavigationMenuItem>
           <NavigationMenuTrigger>Kategorien</NavigationMenuTrigger>
