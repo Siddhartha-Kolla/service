@@ -8,6 +8,8 @@ import Beer from './pages/beer';
 import Wine from './pages/wine';
 import HomePage from './pages/homepage';
 import NotFound from './pages/NotFound';
+import LoginForm from './pages/login';
+import SingUpForm from './pages/signup';
 import { BrowserRouter as Router , Routes , Route } from 'react-router-dom';
 
 function App() {
@@ -24,6 +26,8 @@ function App() {
           <Route exact path="/warm" element={<Warm/>}/>
           <Route exact path="/beer" element={<Beer/>}/>
           <Route exact path="/wine" element={<Wine/>}/>
+          <Route exact path="/login" element={<LoginForm/>}/>
+          <Route exact path="/signup" element={<SingUpForm/>}/>
           <Route path="*" element={<NotFound/>}/>
         </Routes>
       </Router>
@@ -31,4 +35,4 @@ function App() {
   )
 }
 
-export default App
+export default App;

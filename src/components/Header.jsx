@@ -52,7 +52,7 @@ const CenterNavigationMenu = () => {
     <NavigationMenu className="mx-6 flex items-center space-x-4-lg:space-x-6 hidden md:block">
       <NavigationMenuList>
         <NavigationMenuItem>
-          <NavigationMenuTrigger>Components</NavigationMenuTrigger>
+          <NavigationMenuTrigger>Kategorien</NavigationMenuTrigger>
           <NavigationMenuContent>
             <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px] ">
               {components.map((component,index) => (
@@ -92,14 +92,6 @@ const CenterNavigationMenu = () => {
         </NavigationMenuItem>
       </NavigationMenuList>
     </NavigationMenu>
-
-                // <ListItem
-                //   key={component.title}
-                //   title={component.title}
-                //   href={component.href}
-                // >
-                //   {component.description}
-                // </ListItem>
   )
 }
 
@@ -113,9 +105,9 @@ const Header = () => {
               <SheetTrigger>
                 <LuMenu className="h-6 md:hidden w-6" />
               </SheetTrigger>
-              <SheetContent side="left" className="w-[300px] sm:w-[400px]">
-                <NavigationMenu className="flex flex-col">
-                  <NavigationMenuList>
+              <SheetContent side="left" className="w-[300px] sm:w-[400px] bg-green-50">
+                <NavigationMenu>
+                  <NavigationMenuList className="bg-blue-100">
                     <NavigationMenuItem>
                       <NavigationMenuTrigger>Item One</NavigationMenuTrigger>
                       <NavigationMenuContent>
