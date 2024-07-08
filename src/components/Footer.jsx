@@ -7,7 +7,7 @@ const Footer = () => {
      <hr></hr>
      <p>
         <b>Hilfe & Kontakt: {'  '} </b>
-        <u>Adresse:</u> Beispielstraße 10, 11111 Musterhausen, Musterland; {'  '}
+        <u>Adresse:</u> Beispielstraße 10, 12345 Musterhausen, Musterland; {'  '}
         <u>E-Mail:</u> unternehmen@beispiel.com; {'  '}
         <u>Telefon:</u> +01 234 567 89
         <br/>
@@ -18,4 +18,4 @@ const Footer = () => {
   };
 
     export default Footer
-    
+  

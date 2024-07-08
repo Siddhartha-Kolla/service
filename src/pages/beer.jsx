@@ -13,7 +13,7 @@ const hes = (e,s,t) => {
   console.log("HEllo World"+s+t)
 }
 const apiCall = (setProductslist) => {
-  axios.get('http://localhost:3001/categories/?category=wine').then((response) => {
+  axios.get('http://localhost:3001/categories/?category=beer').then((response) => {
     //this console.log will be in our frontend console
     const data = response.data.data;
     let pl = []
@@ -41,11 +41,7 @@ const Beer = () => {
           >
             <div className="h-full w-full flex flex-col justify-center items-center text-center gap-y-8">
               <div className="font-bold text-3xl sm:text-5xl lg:text-6xl sm:max-w-xl max-w-xs text-black dark:text-white bg-secondary/60 p-4 rounded-lg">
-                Featured Products
-                <Button size="lg" className="w-full py-6 text-xl">
-                  <LuShoppingBag className="mr-2" />
-                  Shop Now
-                </Button>
+                Bier
               </div>
             </div>
           </div>

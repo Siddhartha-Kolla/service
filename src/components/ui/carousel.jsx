@@ -163,7 +163,7 @@ const CarouselPrevious = React.forwardRef(({ className, variant = "outline", siz
       onClick={scrollPrev}
       {...props}>
       <ArrowLeftIcon className="h-4 w-4" />
-      <span className="sr-only">Previous slide</span>
+      <span className="sr-only">Letzte Seite</span>
     </Button>)
   );
 })
@@ -184,7 +184,7 @@ const CarouselNext = React.forwardRef(({ className, variant = "outline", size = 
       onClick={scrollNext}
       {...props}>
       <ArrowRightIcon className="h-4 w-4" />
-      <span className="sr-only">Next slide</span>
+      <span className="sr-only">Nächste Seite</span>
     </Button>)
   );
 })

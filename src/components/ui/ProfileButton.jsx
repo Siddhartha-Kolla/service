@@ -19,13 +19,13 @@ const ProfileButton = () => {
         </Avatar>
       </DropdownMenuTrigger>
       <DropdownMenuContent>
-        <DropdownMenuLabel>My Account</DropdownMenuLabel>
+        <DropdownMenuLabel>Mein Konto</DropdownMenuLabel>
         <DropdownMenuSeparator />
-        <DropdownMenuItem className="cursor-pointer">Profile</DropdownMenuItem>
-        <DropdownMenuItem className="cursor-pointer">Billing</DropdownMenuItem>
-        <DropdownMenuItem className="cursor-pointer">Subscription</DropdownMenuItem>
+        <DropdownMenuItem className="cursor-pointer">Profil</DropdownMenuItem>
+        <DropdownMenuItem className="cursor-pointer">Abrechnung</DropdownMenuItem>
+        <DropdownMenuItem className="cursor-pointer">Abo</DropdownMenuItem>
         <DropdownMenuSeparator />
-        <DropdownMenuItem className="cursor-pointer">Log Out</DropdownMenuItem>
+        <DropdownMenuItem className="cursor-pointer">Ausloggen</DropdownMenuItem>
       </DropdownMenuContent>
     </DropdownMenu>
   )

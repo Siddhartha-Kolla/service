@@ -30,12 +30,12 @@ const ProductCard = ({data,callfunc}) => {
               <div className=' grid grid-cols-3 place-items-center z-10' onClick={(e) => e.preventDefault()}>
                 <Button variant="ghost" size="icon" className="m-0" aria-label="Add to Cart" onClick={(e) => hes(e)}>
                   <LuMinusSquare className='h-7 w-7'/>
-                  <span className='sr-only'>Add to Cart</span>
+                  <span className='sr-only'>Zum Warenkorb hinzufügen</span>
                 </Button>
                 <Input className="h-7 w-11 m-0" type='number' inputMode="numeric" min="1"/>
                 <Button variant="ghost" size="icon" aria-label="Add to Cart" onClick={(e) => callfunc(e,"This"," works")}>
                   <LuPlusSquare className='h-7 w-7'/>
-                  <span className='sr-only'>Add to Cart</span>
+                  <span className='sr-only'>Zum Warenkorb hinzufügen</span>
                 </Button>
               </div>
             </div>

@@ -76,7 +76,7 @@ const CenterNavigationMenu = () => {
               href="/"
               className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground"
             >
-              <div className="text-sm font-medium leading-none">On Sale</div>
+              <div className="text-sm font-medium leading-none">Reduziert</div>
             </a>
           </NavigationMenuLink>
         </NavigationMenuItem>
@@ -86,7 +86,7 @@ const CenterNavigationMenu = () => {
               href="/"
               className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground"
             >
-              <div className="text-sm font-medium leading-none">About Us</div>
+              <div className="text-sm font-medium leading-none">Über Uns</div>
             </a>
           </NavigationMenuLink>
         </NavigationMenuItem>
@@ -150,11 +150,11 @@ const Header = () => {
           <div className="flex items-center">
             <Button variant="ghost" size="icon" className="mr-2" aria-label="Shopping Cart">
               <LuShoppingCart className='h-6 w-6'/>
-              <span className=' sr-only'>Shopping Cart</span>
+              <span className=' sr-only'>Warenkorb</span>
             </Button>
             <Button variant="ghost" size="icon" className="mr-6" aria-label="Search">
             <LuSearch className='h-6 w-6'/>
-            <span className=' sr-only'>Search</span>
+            <span className=' sr-only'>Suche</span>
             </Button>
             <ProfileButton/>
           </div>
