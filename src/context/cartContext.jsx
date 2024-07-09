@@ -45,12 +45,13 @@ export const CartProvider = ({children}) => {
     }, [])
   
   const addCartItem = (product, quantity) => {
-    const existingCartItemIndex = cartItems.findIndex((obj) => obj.product.name === product.name);
+    const existingCartItemIndex = cartItems.findIndex((obj) => obj.product === product);
     if (existingCartItemIndex !== -1) {
       const existingCartItem = cartItems[existingCartItemIndex];
+      const tobeChangedQuantity = existingCartItem.quantity + quantity
       const updatedCartItem = {
         ...existingCartItem,
-        quantity,
+        quantity: tobeChangedQuantity,
       };
       const updatedCartItems = [...cartItems];
       updatedCartItems[existingCartItemIndex] = updatedCartItem;
@@ -61,14 +62,14 @@ export const CartProvider = ({children}) => {
   };
 
 	const subtractCartItem = (product, quantity) => {
-    const existingCartItemIndex = cartItems.findIndex((obj) => obj.product.name === product.name);
+    const existingCartItemIndex = cartItems.findIndex((obj) => obj.product === product);
     if (existingCartItemIndex !== -1) {
 			if (cartItems[existingCartItemIndex].quantity > 1) {
 				const existingCartItem = cartItems[existingCartItemIndex];
 				const tobeChangedQuantity = existingCartItem.quantity - quantity
 				const updatedCartItem = {
 					...existingCartItem,
-					tobeChangedQuantity,
+					quantity: tobeChangedQuantity,
 				};
 				const updatedCartItems = [...cartItems];
 				updatedCartItems[existingCartItemIndex] = updatedCartItem;
@@ -80,7 +81,7 @@ export const CartProvider = ({children}) => {
 
 	const removeFromCart = (product) => {
     const updatedCartItems = cartItems.filter(
-      (item) => item.product.name !== product.name
+      (item) => item.product !== product
     );
     setCartItems(updatedCartItems);
   };

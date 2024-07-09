@@ -15,7 +15,7 @@ const ProductCarousel = ({items,hes}) => {
       <CarouselContent className="-ml-1">
         {items.map((item, index) => (
           <CarouselItem key={index} className="pl-2 md:pl-4 sm:basis-1/2 md:basis-1/3 lg:basis-1/4">
-            <ProductCard key={item.id} data={item} callfunc={hes}/>
+            <ProductCard data={item} callfunc={hes}/>
           </CarouselItem>
         ))}
       </CarouselContent>
