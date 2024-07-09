@@ -36,6 +36,7 @@ import { LuTrash2 } from 'react-icons/lu';
 import { useCart } from '@/context/cartContext';
 
 
+
 const components = [
   {
     title: "Wasser",
@@ -89,7 +90,7 @@ const CenterNavigationMenu = () => {
         <NavigationMenuItem>
           <NavigationMenuLink asChild className={navigationMenuTriggerStyle()}>
             <a
-              href="/"
+              href="/sale"
               className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground"
             >
               <div className="text-sm font-medium leading-none">Reduziert</div>
@@ -99,7 +100,7 @@ const CenterNavigationMenu = () => {
         <NavigationMenuItem>
           <NavigationMenuLink asChild className={navigationMenuTriggerStyle()}>
             <a
-              href="/"
+              href="/aboutus"
               className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground"
             >
               <div className="text-sm font-medium leading-none">Über Uns</div>

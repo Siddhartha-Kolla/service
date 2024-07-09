@@ -10,6 +10,8 @@ import HomePage from './pages/homepage';
 import NotFound from './pages/NotFound';
 import LoginForm from './pages/login';
 import SingUpForm from './pages/signup';
+import Sale from './pages/sale.jsx';
+import AboutUs from './pages/aboutus.jsx';
 import { BrowserRouter as Router , Routes , Route } from 'react-router-dom';
 
 function App() {
@@ -29,6 +31,7 @@ function App() {
             <Route path="*" element={<NotFound/>}/>
           </Routes>
         </Router>
+      </CartContext.Provider>
     </div>
   )
 }
