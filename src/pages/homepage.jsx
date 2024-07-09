@@ -24,97 +24,6 @@ const heroinfo = {
   butHref: "/juice",
 }
 
-const products = [
-  {
-    id: "1",
-    volume: 6,
-    name: "HohesC Multivitaminsaft C&D",
-    price: "$3,999.00",
-    image: "coca.jpg",
-    ppl:0.5
-  },
-  {
-    id: "2",
-    volume: 6,
-    name: "Sony A7S III",
-    price: "$3,499.00",
-    image: "FX3.png",
-    category: "Wasser",
-    ppl:0.5
-  },
-  {
-    id: "3",
-    volume: 6,
-    name: "Sony A7C",
-    price: "$1,599.00",
-    image: "FX3.png",
-    category: "Wasser",
-    ppl:0.5
-  },
-  {
-    id: "4",
-    volume: 6,
-    name: "Sony A7C",
-    price: "$1,599.00",
-    image: "FX3.png",
-    category: "Wasser",
-    ppl:0.5
-  },
-  {
-    id: "5",
-    volume: 6,
-    name: "Sony A7C",
-    price: "$1,599.00",
-    image: "FX3.png",
-    category: "Wasser",
-    ppl:0.5
-  },
-  {
-    id: "6",
-    volume: 6,
-    name: "Sony A7C",
-    price: "$1,599.00",
-    image: "FX3.png",
-    category: "Wasser",
-    ppl:0.5
-  },
-  {
-    id: "7",
-    volume: 6,
-    name: "Sony A7C",
-    price: "$1,599.00",
-    image: "FX3.png",
-    category: "Wasser",
-    ppl:0.5
-  },
-  {
-    id: "8",
-    volume: 6,
-    name: "Sony A7C",
-    price: "$1,599.00",
-    image: "FX3.png",
-    category: "Wasser",
-    ppl:0.5
-  },{
-    id: "9",
-    volume: 6,
-    name: "Sony A7C",
-    price: "$1,599.00",
-    image: "FX3.png",
-    category: "Wasser",
-    ppl:0.5
-  }
-  ,{
-    id: "10",
-    volume: 6,
-    name: "Sony A7C",
-    price: "$1,599.00",
-    image: "FX3.png",
-    category: "Wasser",
-    ppl:0.5
-  }
-]
-
 const sorts = ["water","softdrinks","beer","juice","warm","wine"]
 const sortsTitles = ["Wasser","Softdrinks","Bier","Saft","warme Getränke","Wein"]
 
@@ -130,15 +39,12 @@ const apiCall = (setProductslist) => {
     for (let x=0;x<sorts.length;x++) {
       pla.push(pl.filter(product => product.category === sorts[x]))
     }
-    console.log("Hello")
-    console.log(pla)
     setProductslist(pla)
   })
 }
 
 const HomePage = () => {
   const [productslist, setProductslist] = useState([])
-  console.log(productslist)
 
   useEffect(() => {
     apiCall(setProductslist)
@@ -165,7 +71,7 @@ const HomePage = () => {
           </div>
         </div>
         {sorts.map((sort, index) => (
-          <div className="flex flex-col gap-y-8 px-4 sm:px-6 lg:px-8 w-full justify-center">
+          <div className="flex flex-col gap-y-8 px-4 sm:px-6 lg:px-8 w-full justify-center" key={sort}>
           <h2 className=' font-bold text-xl sm:text-2xl lg:text-3xl sm:max-w-xl max-w-xs text-black dark:text-white bg-secondary/60 p-4 carous-head'>{sortsTitles[index]}</h2>
           <div className="flex gap-y-8 px-4 sm:px-6 lg:px-8 w-full justify-center">
             <ProductCarousel items={productslist[index] ?? []} hes={hes} />

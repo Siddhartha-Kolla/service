@@ -4,6 +4,9 @@ import { LuPlusSquare } from "react-icons/lu";
 import {Button} from "@/components/ui/button";
 import {Input} from "@/components/ui/input";
 import { LuMinusSquare } from "react-icons/lu";
+import { LuMinus } from "react-icons/lu";
+import { LuPlus } from "react-icons/lu";
+import {CartContext} from "@/App";
 
 const ProductCard = ({data,callfunc}) => {
   return (
@@ -28,13 +31,14 @@ const ProductCard = ({data,callfunc}) => {
                 {(data.ppl*data.volume).toFixed(2)}€
               </div>
               <div className=' grid grid-cols-3 place-items-center z-10' onClick={(e) => e.preventDefault()}>
-                <Button variant="ghost" size="icon" className="m-0" aria-label="Add to Cart" onClick={(e) => hes(e)}>
-                  <LuMinusSquare className='h-7 w-7'/>
+                <Button variant="outline" size="icon" className="m-0 h-7 w-7 flex justify-center items-center" aria-label="Add to Cart" onClick={(e) => hes(e)}>
+                  <LuMinus className='h-3 w-3'/>
+                  {/* - */}
                   <span className='sr-only'>Zum Warenkorb hinzufügen</span>
                 </Button>
-                <Input className="h-7 w-11 m-0" type='number' inputMode="numeric" min="1" value="4"/>
-                <Button variant="ghost" size="icon" aria-label="Add to Cart" onClick={(e) => callfunc(e,"This"," works")}>
-                  <LuPlusSquare className='h-7 w-7'/>
+                <Input className="h-7 w-11 m-0" type='number' inputMode="numeric" min="1" defaultValue="4"/>
+                <Button variant="outline" size="icon" className="m-0 h-7 w-7" aria-label="Add to Cart" onClick={(e) => callfunc(e,"This"," works")}>
+                  <LuPlus className='h-3 w-3'/>
                   <span className='sr-only'>Zum Warenkorb hinzufügen</span>
                 </Button>
               </div>
