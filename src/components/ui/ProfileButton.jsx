@@ -25,7 +25,7 @@ const ProfileButton = () => {
         <DropdownMenuItem className="cursor-pointer">Abrechnung</DropdownMenuItem>
         <DropdownMenuItem className="cursor-pointer">Abo</DropdownMenuItem>
         <DropdownMenuSeparator />
-        <DropdownMenuItem className="cursor-pointer">Ausloggen</DropdownMenuItem>
+        <DropdownMenuItem className="cursor-pointer">Abmelden</DropdownMenuItem>
       </DropdownMenuContent>
     </DropdownMenu>
   )

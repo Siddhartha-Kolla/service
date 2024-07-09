@@ -32,7 +32,7 @@ const SingUpForm = () => {
               </div>
             </div>
             <div className="grid gap-2">
-              <Label htmlFor="email">Email</Label>
+              <Label htmlFor="email">E-Mail</Label>
               <Input
                 id="email"
                 type="email"
@@ -45,7 +45,7 @@ const SingUpForm = () => {
               <Input id="password" type="password" />
             </div>
             <Button type="submit" className="w-full">
-              Einen Konto erstellen
+               Registrieren
             </Button>
             {/* <Button variant="outline" className="w-full">
               Sign up with GitHub

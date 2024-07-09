@@ -14,7 +14,7 @@ const LoginForm = () => {
     <div className=" flex flex-col justify-between items h-screen">
       <Card className="mx-auto max-w-sm my-28">
         <CardHeader>
-          <CardTitle className="text-2xl">Anmelden</CardTitle>
+          <CardTitle className="text-xl">Anmelden</CardTitle>
           <CardDescription>
             Geben Sie unten Ihre E-Mail-Adresse an, um sich bei Ihrem Konto anzumelden
           </CardDescription>
@@ -22,7 +22,7 @@ const LoginForm = () => {
         <CardContent>
           <div className="grid gap-4">
             <div className="grid gap-2">
-              <Label htmlFor="email">Email</Label>
+              <Label htmlFor="email">E-Mail</Label>
               <Input
                 id="email"
                 type="email"
