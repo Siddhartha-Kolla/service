@@ -2,18 +2,24 @@ import { createContext, useContext, useState } from "react";
 
 import { useEffect } from "react";
 
+import axios from "axios";
+
 const CartContext = createContext({
   cartItems: [],
-  addItem: () => {},
-  removeItem: () => {},
-  totalCount: 0,
+  addCartItem: () => {},
+  removeFromCart: () => {},
+  cartCount: 0,
   cartTotal: 0,
   doesItemExist: () => {},
   subtractCartItem: () => {},
   data: []
 })
 
-const CartProvider = () => {
+export const useCart = () => {
+  return useContext(CartContext);
+};
+
+export const CartProvider = ({children}) => {
   const [cartItems,setCartItems] = useState([]);
   const [data, setData] = useState([]);
 
@@ -30,7 +36,7 @@ const CartProvider = () => {
       // for (let x=0;x<sorts.length;x++) {
       //   pla.push(pl.filter(product => product.category === sorts[x]))
       // }
-      setData(pla)
+      setData(pl)
     })
   }
 

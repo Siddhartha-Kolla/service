@@ -11,12 +11,10 @@ import NotFound from './pages/NotFound';
 import LoginForm from './pages/login';
 import SingUpForm from './pages/signup';
 import { BrowserRouter as Router , Routes , Route } from 'react-router-dom';
-import { createContext } from 'react';
 
 function App() {
   return (
     <div>
-      <CartContext.Provider value={{items,setItems}}>
         <Router>
           <Routes>
             <Route exact path="/" element={<HomePage/>}/>
@@ -31,7 +29,6 @@ function App() {
             <Route path="*" element={<NotFound/>}/>
           </Routes>
         </Router>
-      </CartContext.Provider>
     </div>
   )
 }

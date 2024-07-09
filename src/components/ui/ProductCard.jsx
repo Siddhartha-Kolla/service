@@ -6,9 +6,13 @@ import {Input} from "@/components/ui/input";
 import { LuMinusSquare } from "react-icons/lu";
 import { LuMinus } from "react-icons/lu";
 import { LuPlus } from "react-icons/lu";
-import {CartContext} from "@/App";
+import { useCart } from '@/context/cartContext';
 
 const ProductCard = ({data,callfunc}) => {
+  const {cartItems, addCartItem,removeFromCart,cartCount,cartTotal,doesItemExist,subtractCartItem} = useCart();
+  const addIt = (product,quantity) => {
+    addCartItem(product,quantity);
+  }
   return (
     <a href="/" className="outline-0 focus:ring-2 hover:ring-2 ring-primary transition duration-300 rounded-lg z-[2]">
         <Card className="group rounded-lg border-2 h-full">
@@ -37,7 +41,7 @@ const ProductCard = ({data,callfunc}) => {
                   <span className='sr-only'>Zum Warenkorb hinzufügen</span>
                 </Button>
                 <Input className="h-7 w-11 m-0" type='number' inputMode="numeric" min="1" defaultValue="4"/>
-                <Button variant="outline" size="icon" className="m-0 h-7 w-7" aria-label="Add to Cart" onClick={(e) => callfunc(e,"This"," works")}>
+                <Button variant="outline" size="icon" className="m-0 h-7 w-7" aria-label="Add to Cart" onClick={() => {addIt(data,1)}}>
                   <LuPlus className='h-3 w-3'/>
                   <span className='sr-only'>Zum Warenkorb hinzufügen</span>
                 </Button>

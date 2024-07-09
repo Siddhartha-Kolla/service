@@ -33,7 +33,7 @@ import './Header.css';
 import { LuMinus } from 'react-icons/lu';
 import { LuPlus } from 'react-icons/lu';
 import { LuTrash2 } from 'react-icons/lu';
-import {CartContext} from "@/App";
+import { useCart } from '@/context/cartContext';
 
 
 const components = [
@@ -113,33 +113,29 @@ const CenterNavigationMenu = () => {
 
 
 export function CartSheet() {
-  const {items,setItems} = useContext(CartContext);
-  console.log(items)
+  const {cartItems, addItem,removeItem,cartCount,cartTotal,doesItemExist,subtractCartItem,data} = useCart();
+  console.log(`Total Count: ${cartCount}`)
   return (
     <Sheet>
       <SheetTrigger asChild>
         <Button variant="ghost" size="icon" className="mr-2" aria-label="Shopping Cart">
-          <Badge
-                variant="secondary"
-                className="absolute right-[7.5rem] md:right-32 lg:right-[8.5rem] top-2 g-6 w-6 h-6 rounded-full p-2"
-              >
-                1
-              </Badge>
+          {cartCount > 0 &&
+          (<Badge variant="secondary" className="absolute right-[7.5rem] md:right-32 lg:right-[8.5rem] top-2 g-6 w-6 h-6 rounded-full p-2">{cartCount}</Badge>)}
           <LuShoppingCart className='h-6 w-6'/>
           <span className=' sr-only'>Warenkorb</span>
         </Button>
       </SheetTrigger>
       <SheetContent side="right" className="flex w-full flex-col pr-0 sm:max-w-lg">
         <SheetHeader className="px-1">
-          <SheetTitle className=" text-2xl inter-fonts-use">Warenkorb</SheetTitle>
+          <SheetTitle className=" text-2xl inter-fonts-use">Warenkorb {cartCount > 0 && `(${cartCount})`}</SheetTitle>
         </SheetHeader>
         <Separator className="px-1 mr-1"/>
         <div className="flex flex-1 flex-col gap-5 overflow-hidden">
           <ScrollArea className="h-full">
-            {items &&
+            {cartItems &&
               <div className="flex flex-col gap-5 pr-6">
-              {items.map((item,ind) => (
-                <CartItem data={item} key={ind}/>
+              {cartItems.map((item,ind) => (
+                <CartItem data={item.product} key={ind}/>
               ))}
             </div>}
           </ScrollArea>
@@ -172,13 +168,14 @@ const CartItem = (data) => {
           {cartitemdata.volume}L
         </span>
       </div>
-      <CartItemActions/>
+      <CartItemActions product={cartitemdata}/>
     </div>
   )
 
 }
 
-const CartItemActions = () => {
+const CartItemActions = ({product}) => {
+  const {cartItems, addItem,removeItem,cartCount,cartTotal,doesItemExist,subtractCartItem,data} = useCart();
   return (
     <div className=' grid grid-cols-4 place-items-center z-10' onClick={(e) => e.preventDefault()}>
       <Button variant="outline" size="icon" className="m-0 h-7 w-7 flex justify-center items-center" aria-label="Add to Cart" onClick={(e) => hes(e)}>
@@ -186,7 +183,7 @@ const CartItemActions = () => {
         {/* - */}
         <span className='sr-only'>Zum Warenkorb hinzufügen</span>
       </Button>
-      <Input className="h-7 w-11 m-0" type='number' inputMode="numeric" min="1" defaultValue="4"/>
+      <Input className="h-7 w-11 m-0" type='number' inputMode="numeric" min="1" defaultValue={cartItems[cartItems.findIndex((obj) => obj.product.name === product.name)].quantity}/>
       <Button variant="outline" size="icon" className="m-0 h-7 w-7" aria-label="Add to Cart" onClick={(e) => callfunc(e,"This"," works")}>
         <LuPlus className='h-3 w-3'/>
         <span className='sr-only'>Zum Warenkorb hinzufügen</span>

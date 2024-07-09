@@ -4,14 +4,17 @@ import App from './App.jsx'
 import './index.css'
 import { ThemeProvider } from './components/ThemeProvider.jsx'
 import Header from './components/Header.jsx'
-import Footer from './components/Footer.jsx'
+import Footer from './components/Footer.jsx';
+import { CartProvider } from './context/cartContext.jsx'
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <ThemeProvider attribute="class" defaultTheme="light">
-      <Header/>
-      <App/>
-      <Footer/>
-    </ThemeProvider>
+    <CartProvider>
+      <ThemeProvider attribute="class" defaultTheme="light">
+        <Header/>
+        <App/>
+        <Footer/>
+      </ThemeProvider>
+    </CartProvider>
   </React.StrictMode>
 )
