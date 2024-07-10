@@ -10,10 +10,19 @@ import { useCart } from '@/context/cartContext';
 
 const ProductCardControls = ({product,itemid}) => {
   const {cartItems, addCartItem,removeFromCart,cartCount,cartTotal,doesItemExist,subtractCartItem} = useCart();
+  const subtractCartItemfunc = (product, quantity,itemId) => {
+    if (cartItems[itemId].quantity - quantity == 0) {
+      removeFromCart(product)
+    }
+    else {
+      subtractCartItem(product,1);
+    }
+
+  }
   return(
     <div className=' grid grid-cols-3 place-items-center z-10' onClick={(e) => e.preventDefault()}>
       {itemid >= 0 &&
-      (<Button variant="outline" size="icon" className="m-0 h-7 w-7 flex justify-center items-center" aria-label="Add to Cart" onClick={() => {subtractCartItem(product,1)}}>
+      (<Button variant="outline" size="icon" className="m-0 h-7 w-7 flex justify-center items-center" aria-label="Add to Cart" onClick={() => {subtractCartItemfunc(product,1,itemid)}}>
         <LuMinus className='h-3 w-3'/>
         <span className='sr-only'>Zum Warenkorb hinzufügen</span>
       </Button>

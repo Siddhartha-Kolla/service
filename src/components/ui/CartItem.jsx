@@ -18,7 +18,11 @@ import { Input } from "@/components/ui/input"
 import { LuMinus } from 'react-icons/lu';
 import { LuPlus } from 'react-icons/lu';
 import { LuTrash2 } from 'react-icons/lu';
+import { SlCreditCard } from "react-icons/sl";
 import { useCart } from '@/context/cartContext';
+import { useAuth0 } from '@auth0/auth0-react';
+import { useNavigate } from "react-router-dom";
+import { Navigate } from 'react-router-dom';
 
 
 const components = [
@@ -51,6 +55,16 @@ const components = [
 
 export function CartSheet() {
   const {cartItems, addCartItem,removeFromCart,cartCount,cartTotal,doesItemExist,subtractCartItem} = useCart();
+  const {isAuthenticated, loginWithRedirect} = useAuth0();
+  const navigate = useNavigate();
+  function redirectToPay() {
+    if (isAuthenticated) {
+      navigate("/checkout")
+    }
+    else {
+      loginWithRedirect()
+    }
+  }
   return (
     <Sheet>
       <SheetTrigger asChild>
@@ -78,7 +92,10 @@ export function CartSheet() {
         </div>
         <SheetFooter>
           <SheetClose asChild>
-            <Button type="submit">Save changes</Button>
+            <Button type="submit" className="md:w-full flex gap-2 justify-center self-center md:self-auto w-[95%] mr-4" disabled={cartItems.length == 0} onClick={redirectToPay}>
+              <SlCreditCard className='h-6 w-6'/>
+              Bezahlen
+            </Button>
           </SheetClose>
         </SheetFooter>
       </SheetContent>
