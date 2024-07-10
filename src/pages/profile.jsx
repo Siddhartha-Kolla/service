@@ -55,7 +55,7 @@ const EditProfile = () => {
                       <input id="dropzone-file" type="file" className="hidden" value={dropValue} onChange={e => setdropsValue(e.target.value)}/>
                   </label>
               </div>
-              {dropValue && (<p className="mt-4">{dropValue}</p>)}
+              {dropValue && (<p className="mt-4">{dropValue.split("\\")[2]}</p>)}
 
 
             </Label> 
