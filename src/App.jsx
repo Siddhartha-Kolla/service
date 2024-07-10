@@ -10,7 +10,7 @@ import HomePage from './pages/homepage';
 import NotFound from './pages/NotFound';
 import LoginForm from './pages/login';
 import SingUpForm from './pages/signup';
-import Checkout from './pages/checkout.jsx';
+// import Checkout from './pages/checkout.jsx';
 import Sale from './pages/sale.jsx';
 import AboutUs from './pages/aboutus.jsx';
 import ChangePassword from './pages/changepassword.jsx';
@@ -45,7 +45,7 @@ function App() {
             <Route exact path="/aboutus" element={<AboutUs/>}/>
             <Route exact path="/changepassword" element={<ChangePassword/>}/>
             <Route exact path="/editprofile" element={<EditProfile/>}/>
-            <Route exact path="/checkout" element={<Checkout/>}/>
+            {/* <Route exact path="/checkout" element={<Checkout/>}/> */}
             <Route path="*" element={<NotFound/>}/>
           </Routes>
         {/* </Router> */}
