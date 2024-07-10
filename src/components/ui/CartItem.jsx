@@ -18,6 +18,7 @@ import { Input } from "@/components/ui/input"
 import { LuMinus } from 'react-icons/lu';
 import { LuPlus } from 'react-icons/lu';
 import { LuTrash2 } from 'react-icons/lu';
+import { SlCreditCard } from "react-icons/sl";
 import { useCart } from '@/context/cartContext';
 
 
@@ -78,7 +79,10 @@ export function CartSheet() {
         </div>
         <SheetFooter>
           <SheetClose asChild>
-            <Button type="submit">Save changes</Button>
+            <Button type="submit" className="md:w-full flex gap-2 justify-center self-center md:self-auto w-[95%] mr-4" disabled={cartItems.length == 0}>
+              <SlCreditCard className='h-6 w-6'/>
+              Bezahlen
+            </Button>
           </SheetClose>
         </SheetFooter>
       </SheetContent>
