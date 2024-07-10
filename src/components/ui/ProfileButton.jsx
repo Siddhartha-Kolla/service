@@ -8,13 +8,16 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { useAuth0 } from '@auth0/auth0-react'
 
 const ProfileButton = () => {
+  const { logout, user } = useAuth0();
+  const { name, picture, email } = user;
   return (
-    <DropdownMenu>
+    <DropdownMenu className="select-none">
       <DropdownMenuTrigger>
         <Avatar>
-          <AvatarImage src="/img/shadcn.jpg" />
+          <AvatarImage src={picture} />
           <AvatarFallback>CN</AvatarFallback>
         </Avatar>
       </DropdownMenuTrigger>
@@ -25,7 +28,7 @@ const ProfileButton = () => {
         <DropdownMenuItem className="cursor-pointer">Abrechnung</DropdownMenuItem>
         <DropdownMenuItem className="cursor-pointer">Abo</DropdownMenuItem>
         <DropdownMenuSeparator />
-        <DropdownMenuItem className="cursor-pointer">Abmelden</DropdownMenuItem>
+        <DropdownMenuItem className="cursor-pointer" onClick={() => logout({returnTo: window.location.origin,})}>Abmelden</DropdownMenuItem>
       </DropdownMenuContent>
     </DropdownMenu>
   )

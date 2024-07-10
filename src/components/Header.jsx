@@ -3,7 +3,7 @@ import Container from './ui/container'
 import { Button } from "@/components/ui/button"
 import { LuShoppingCart } from "react-icons/lu";
 import { LuSearch } from "react-icons/lu";
-import ProfileButton from './ui/ProfileButton';
+import Profile from './Profile';
 import { LuMenu } from "react-icons/lu";
 import {
   Sheet,
@@ -184,7 +184,7 @@ const Header = () => {
             <LuSearch className='h-6 w-6'/>
             <span className=' sr-only'>Suche</span>
             </Button>
-            <ProfileButton/>
+            <Profile/>
           </div>
         </div>
           

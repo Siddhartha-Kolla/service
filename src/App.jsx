@@ -10,14 +10,25 @@ import HomePage from './pages/homepage';
 import NotFound from './pages/NotFound';
 import LoginForm from './pages/login';
 import SingUpForm from './pages/signup';
+import Checkout from './pages/checkout.jsx';
 import Sale from './pages/sale.jsx';
 import AboutUs from './pages/aboutus.jsx';
 import { BrowserRouter as Router , Routes , Route } from 'react-router-dom';
+import { useAuth0 } from '@auth0/auth0-react'
 
 function App() {
+
+  const { isLoading } = useAuth0();
+
+  if (isLoading) {
+    return (
+      <div>Loading ....</div>
+    );
+  }
+
   return (
     <div>
-        <Router>
+        {/* <Router> */}
           <Routes>
             <Route exact path="/" element={<HomePage/>}/>
             <Route exact path="/water" element={<Water/>}/>
@@ -28,9 +39,10 @@ function App() {
             <Route exact path="/wine" element={<Wine/>}/>
             <Route exact path="/login" element={<LoginForm/>}/>
             <Route exact path="/signup" element={<SingUpForm/>}/>
+            <Route exact path="/checkout" element={<Checkout/>}/>
             <Route path="*" element={<NotFound/>}/>
           </Routes>
-        </Router>
+        {/* </Router> */}
     </div>
   )
 }
