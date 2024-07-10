@@ -12,13 +12,13 @@ const ProductCardControls = ({product,itemid}) => {
   const {cartItems, addCartItem,removeFromCart,cartCount,cartTotal,doesItemExist,subtractCartItem} = useCart();
   return(
     <div className=' grid grid-cols-3 place-items-center z-10' onClick={(e) => e.preventDefault()}>
-      {itemid > 0 &&
+      {itemid >= 0 &&
       (<Button variant="outline" size="icon" className="m-0 h-7 w-7 flex justify-center items-center" aria-label="Add to Cart" onClick={() => {subtractCartItem(product,1)}}>
         <LuMinus className='h-3 w-3'/>
         <span className='sr-only'>Zum Warenkorb hinzufügen</span>
       </Button>
         )}
-      {itemid > 0 &&
+      {itemid >= 0 &&
         (<Input className="h-7 w-11 m-0" type='number' inputMode="numeric" min="0" value={cartItems[itemid].quantity}/>)}
       <Button variant="outline" size="icon" className="m-0 h-7 w-7" aria-label="Add to Cart" onClick={() => {addCartItem(product,1)}}>
         <LuPlus className='h-3 w-3'/>

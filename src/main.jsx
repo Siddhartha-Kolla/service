@@ -11,9 +11,10 @@ ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <CartProvider>
       <ThemeProvider attribute="class" defaultTheme="light">
-        <Header/>
+        {/* <Header/> */}
+        {window.location.pathname != "/editprofile" && (<Header/>)}
         <App/>
-        <Footer/>
+        {window.location.pathname != "/editprofile" && (<Footer/>)}
       </ThemeProvider>
     </CartProvider>
   </React.StrictMode>

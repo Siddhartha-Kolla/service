@@ -12,6 +12,8 @@ import LoginForm from './pages/login';
 import SingUpForm from './pages/signup';
 import Sale from './pages/sale.jsx';
 import AboutUs from './pages/aboutus.jsx';
+import ChangePassword from './pages/changepassword.jsx';
+import EditProfile from './pages/profile.jsx';
 import { BrowserRouter as Router , Routes , Route } from 'react-router-dom';
 
 function App() {
@@ -28,6 +30,10 @@ function App() {
             <Route exact path="/wine" element={<Wine/>}/>
             <Route exact path="/login" element={<LoginForm/>}/>
             <Route exact path="/signup" element={<SingUpForm/>}/>
+            <Route exact path="/sale" element={<Sale/>}/>
+            <Route exact path="/aboutus" element={<AboutUs/>}/>
+            <Route exact path="/changepassword" element={<ChangePassword/>}/>
+            <Route exact path="/editprofile" element={<EditProfile/>}/>
             <Route path="*" element={<NotFound/>}/>
           </Routes>
         </Router>
