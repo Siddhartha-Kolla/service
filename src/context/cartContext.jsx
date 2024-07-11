@@ -1,8 +1,7 @@
 import { createContext, useContext, useState } from "react";
-
 import { useEffect } from "react";
-
 import axios from "axios";
+import { useAuth0 } from '@auth0/auth0-react';
 
 const CartContext = createContext({
   cartItems: [],
@@ -21,7 +20,9 @@ export const useCart = () => {
 };
 
 export const CartProvider = ({children}) => {
+  const {isAuthenticated} = useAuth0();
   const [cartItems,setCartItems] = useState([]);
+  const [cartInitialized,setCartInitialized] = useState(false);
   const [data, setData] = useState([]);
 
 
@@ -44,6 +45,26 @@ export const CartProvider = ({children}) => {
   useEffect(() => {
       apiCall(setData)
     }, [])
+  
+  useEffect(() => {
+    console.log("Loading the data")
+    if (isAuthenticated) {
+      console.log("");
+    }
+    else {
+      let items = localStorage.getItem('cartItems') ? JSON.parse(localStorage.getItem('cartItems')) : [];
+      console.log("Items ",items)
+      setCartItems(items);
+      setCartInitialized(true)
+    }
+
+  },[isAuthenticated])
+
+  useEffect(() => {
+    if (!cartInitialized) {return}
+    console.log("Updating ",cartItems)
+    localStorage.setItem('cartItems', JSON.stringify(cartItems))
+  },[cartItems])
   
   const addCartItem = (product, quantity) => {
     const existingCartItemIndex = cartItems.findIndex((obj) => obj.product === product);
