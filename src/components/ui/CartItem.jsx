@@ -130,14 +130,14 @@ export const CartItem = (productdata) => {
 }
 
 export const CartItemActions = ({product, itemid}) => {
-  const {cartItems, addCartItem,removeFromCart,cartCount,cartTotal,doesItemExist,subtractCartItem} = useCart();
+  const {cartItems, addCartItem,removeFromCart,cartCount,cartTotal,doesItemExist,subtractCartItem,updateCartItemQuantity} = useCart();
   return (
     <div className=' grid grid-cols-4 place-items-center z-10' onClick={(e) => e.preventDefault()}>
       <Button variant="outline" size="icon" className="m-0 h-7 w-7 flex justify-center items-center" aria-label="Add to Cart" onClick={() => {subtractCartItem(product,1)}}>
         <LuMinus className='h-3 w-3'/>
         <span className='sr-only'>Noch ein Artikel hinzufügen</span>
       </Button>
-      <Input className="h-7 w-11 m-0" type='number' inputMode="numeric" min="1" max={cartItems[itemid].product.capacity} value={cartItems[itemid].quantity}/>
+      <Input className="h-7 w-11 m-0" type='number' inputMode="numeric" min="1" max={cartItems[itemid].product.capacity} value={cartItems[itemid].quantity} onChange={(e) => {updateCartItemQuantity(product,e.target.value)}}/>
       <Button variant="outline" size="icon" className="m-0 h-7 w-7" aria-label="Add to Cart" onClick={() => {addCartItem(product,1)}}>
         <LuPlus className='h-3 w-3'/>
         <span className='sr-only'>Ein Artikel entfernen</span>

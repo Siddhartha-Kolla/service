@@ -12,6 +12,7 @@ const CartContext = createContext({
   cartTotal: 0,
   doesItemExist: () => {},
   subtractCartItem: () => {},
+  updateCartItemQuantity: () => {},
   data: []
 })
 
@@ -48,7 +49,13 @@ export const CartProvider = ({children}) => {
     const existingCartItemIndex = cartItems.findIndex((obj) => obj.product === product);
     if (existingCartItemIndex !== -1) {
       const existingCartItem = cartItems[existingCartItemIndex];
-      const tobeChangedQuantity = existingCartItem.quantity + quantity
+      let tobeChangedQuantity = existingCartItem.quantity
+      if (existingCartItem.quantity+quantity > existingCartItem.product.capacity) {
+        tobeChangedQuantity = existingCartItem.quantity
+      }
+      else {
+        tobeChangedQuantity = existingCartItem.quantity + quantity
+      }
       const updatedCartItem = {
         ...existingCartItem,
         quantity: tobeChangedQuantity,
@@ -77,6 +84,27 @@ export const CartProvider = ({children}) => {
 			}
     }
   };
+
+  const updateCartItemQuantity = (product,quantity) => {
+    const existingCartItemIndex = cartItems.findIndex((obj) => obj.product === product);
+    if (existingCartItemIndex !== -1) {
+      const existingCartItem = cartItems[existingCartItemIndex];
+      let tobeChangedQuantity = existingCartItem.quantity
+      if (quantity > existingCartItem.product.capacity || quantity < 1) {
+        tobeChangedQuantity = existingCartItem.quantity
+      }
+      else {
+        tobeChangedQuantity = quantity
+      }
+      const updatedCartItem = {
+        ...existingCartItem,
+        quantity: Math.max(tobeChangedQuantity,1),
+      };
+      const updatedCartItems = [...cartItems];
+      updatedCartItems[existingCartItemIndex] = updatedCartItem;
+      setCartItems(updatedCartItems);
+    }
+  }
 
 
 	const removeFromCart = (product) => {
@@ -107,6 +135,7 @@ export const CartProvider = ({children}) => {
         cartTotal,
 				doesItemExist,
 				subtractCartItem,
+        updateCartItemQuantity,
         data
       }}
     >
