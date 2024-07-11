@@ -15,6 +15,7 @@ import Sale from './pages/sale.jsx';
 import AboutUs from './pages/aboutus.jsx';
 import ChangePassword from './pages/changepassword.jsx';
 import EditProfile from './pages/profile.jsx';
+import Checkout from './pages/checkout.jsx'
 import { BrowserRouter as Router , Routes , Route } from 'react-router-dom';
 import { useAuth0 } from '@auth0/auth0-react'
 
@@ -32,7 +33,7 @@ function App() {
     <div>
         {/* <Router> */}
           <Routes>
-            <Route exact path="/" element={<HomePage/>}/>
+            <Route exact path="/" element={<HomePage/>}/>         
             <Route exact path="/water" element={<Water/>}/>
             <Route exact path="/juice" element={<Juice/>}/>
             <Route exact path="/drink" element={<Drink/>}/>
@@ -45,7 +46,7 @@ function App() {
             <Route exact path="/aboutus" element={<AboutUs/>}/>
             <Route exact path="/changepassword" element={<ChangePassword/>}/>
             <Route exact path="/editprofile" element={<EditProfile/>}/>
-            {/* <Route exact path="/checkout" element={<Checkout/>}/> */}
+            <Route exact path="/checkout" element={<Checkout/>}/>
             <Route path="*" element={<NotFound/>}/>
           </Routes>
         {/* </Router> */}

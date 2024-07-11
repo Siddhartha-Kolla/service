@@ -1,0 +1,15 @@
+.firstpic {
+    float: right; 
+    width: 40%;
+    height: 20%;
+    margin-right: 100px;
+    margin-top: 80px;
+}
+
+.secondpic {
+    float: left; 
+    width: 57%;
+    height: 55%;
+    margin-left: 25px;
+}
+    

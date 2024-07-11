@@ -35,7 +35,11 @@ import { LuPlus } from 'react-icons/lu';
 import { LuTrash2 } from 'react-icons/lu';
 import { useCart } from '@/context/cartContext';
 import { CartSheet } from './ui/CartItem';
-
+import {
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+} from "@/components/ui/popover";
 
 
 const components = [
@@ -180,16 +184,31 @@ const Header = () => {
               <span className=' sr-only'>Warenkorb</span>
             </Button> */}
             <CartSheet/>
-            <Button variant="ghost" size="icon" className="mr-6" aria-label="Search">
-            <LuSearch className='h-6 w-6'/>
-            <span className=' sr-only'>Suche</span>
-            </Button>
-            <Profile/>
-          </div>
-        </div>
-          
-      </Container>
-    </header>
+            <Popover>
+              <PopoverTrigger asChild>
+                <Button variant="ghost" size="icon" className="mr-6" aria-label="Search">
+                  <LuSearch className='h-6 w-6'/>
+                  <span className=' sr-only'>Suche</span>
+                </Button>
+              </PopoverTrigger>
+              <PopoverContent className="w-80">
+                <div className="grid gap-4">
+                  <div className="space-y-2">
+                    <h4 className="font-medium leading-none">Produktsuche</h4>
+                    <p className="text-sm text-muted-foreground">Geben Sie hier Ihr gesuchtes Produkt ein</p>
+                  </div>
+                  <div className="grid grid-cols-2 items-center gap-0">
+                    <Label htmlFor="maxHeight"></Label>
+                    <Input id="maxHeight" defaultValue="" className="col-span-2 h-8"/>
+                  </div>
+                </div>
+              </PopoverContent>
+            </Popover>
+          <Profile/>
+         </div>
+        </div> 
+       </Container>
+      </header>
   )
 }
 

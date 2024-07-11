@@ -1,14 +1,21 @@
 import React from 'react'
+import './aboutus.css'
 
 const AboutUs = () => {
     return (
         <div className="h-screen" style={{fontSize: '1.5em'}}>
+            <img src="quibiq-logo.jpg" alt="test" className='firstpic'/>
+            <p>   </p><br/>
             <p className="text-left"><u>Das Unternehmen</u></p>
             <p style={{width: '40%'}}>
-                <ul>Ziel</ul>
-                <ul>Infos darüber, was gemacht wird</ul>
-                <ul>ggf. Sonstiges</ul>
+                QUIBIQ ist Kompetenzführer für Connectivity-Lösungen auf der Microsoft Plattform im deutschsprachigen Raum. Das Unternehmen hat sich seit seiner Gründung 2000
+                auf Integration spezialisiert und in mehr als 20 Jahren, schon mehr als 800 Projekte in Deutschland, sowie in Österreich und der Schweiz absolviert.
             </p>
+            <p>   </p><br/>
+            <p>   </p><br/>
+            <p>   </p><br/>
+            <p>   </p><br/>
+            <img src="unsere_Startseite.jpeg" alt="test" className='secondpic'/>
             <p className="text-right"><u>Das Projekt</u></p>
             <p className="text-right" style={{float: "right", width: '40%', textAlign: 'justify'}}>
                 Diese Website entstand während eines Schülerpraktikums der 9. Klasse. Sie wurde über zwei Wochen hinweg in Partnerarbeit erstellt, 
