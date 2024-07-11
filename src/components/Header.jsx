@@ -34,7 +34,7 @@ import { LuMinus } from 'react-icons/lu';
 import { LuPlus } from 'react-icons/lu';
 import { LuTrash2 } from 'react-icons/lu';
 import { useCart } from '@/context/cartContext';
-import { CartSheet } from './ui/CartItem';
+import { CartSheet } from './CartSheet';
 import {
   Popover,
   PopoverContent,

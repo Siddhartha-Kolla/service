@@ -1,108 +1,8 @@
 import React from 'react'
-import { Button } from "@/components/ui/button"
-import { LuShoppingCart } from "react-icons/lu";
-import {
-  Sheet,
-  SheetClose,
-  SheetContent,
-  SheetDescription,
-  SheetFooter,
-  SheetHeader,
-  SheetTitle,
-  SheetTrigger,
-} from "@/components/ui/sheet"
-import {Badge} from "@/components/ui/badge";
-import  {Separator} from "@/components/ui/separator"
-import  {ScrollArea} from "@/components/ui/scroll-area";
-import { Input } from "@/components/ui/input"
-import { LuMinus } from 'react-icons/lu';
-import { LuPlus } from 'react-icons/lu';
-import { LuTrash2 } from 'react-icons/lu';
-import { SlCreditCard } from "react-icons/sl";
 import { useCart } from '@/context/cartContext';
-import { useAuth0 } from '@auth0/auth0-react';
-import { useNavigate } from "react-router-dom";
-import { Navigate } from 'react-router-dom';
-
-
-const components = [
-  {
-    title: "Wasser",
-    href: "/water",
-  },
-  {
-    title: "Saft",
-    href: "/juice",
-  },
-  {
-    title: "Softdrinks",
-    href: "/drink",
-  },
-  {
-    title: "warme Getränke",
-    href: "/warm",},
-  {
-    title: "Bier",
-    href: "/beer",
-  },
-  {
-    title: "Wein",
-    href: "/wine",
-  },
-  
-]
-
-
-export function CartSheet() {
-  const {cartItems, addCartItem,removeFromCart,cartCount,cartTotal,doesItemExist,subtractCartItem} = useCart();
-  const {isAuthenticated, loginWithRedirect} = useAuth0();
-  const navigate = useNavigate();
-  function redirectToPay() {
-    if (isAuthenticated) {
-      navigate("/checkout")
-    }
-    else {
-      loginWithRedirect()
-    }
-  }
-  return (
-    <Sheet>
-      <SheetTrigger asChild>
-        <Button variant="ghost" size="icon" className="mr-2" aria-label="Shopping Cart">
-          {cartCount > 0 &&
-          (<Badge variant="secondary" className="absolute right-[7.5rem] md:right-32 lg:right-[8.5rem] top-2 g-6 w-6 h-6 rounded-full p-2">{cartCount}</Badge>)}
-          <LuShoppingCart className='h-6 w-6'/>
-          <span className=' sr-only'>Warenkorb</span>
-        </Button>
-      </SheetTrigger>
-      <SheetContent side="right" className="flex w-full flex-col pr-0 sm:max-w-lg">
-        <SheetHeader className="px-1">
-          <SheetTitle className=" text-2xl inter-fonts-use">Warenkorb {cartCount > 0 && `(${cartCount})`}</SheetTitle>
-        </SheetHeader>
-        <Separator className="px-1 mr-1"/>
-        <div className="flex flex-1 flex-col gap-5 overflow-hidden">
-          <ScrollArea className="h-full">
-            {cartItems &&
-              <div className="flex flex-col gap-5 pr-6">
-              {cartItems.map((item,ind) => (
-                <CartItem data={item.product} key={ind}/>
-              ))}
-            </div>}
-          </ScrollArea>
-        </div>
-        <SheetFooter>
-          <SheetClose asChild>
-            <Button type="submit" className="md:w-full flex gap-2 justify-center self-center md:self-auto w-[95%] mr-4" disabled={cartItems.length == 0} onClick={redirectToPay}>
-              <SlCreditCard className='h-6 w-6'/>
-              Bezahlen
-            </Button>
-          </SheetClose>
-        </SheetFooter>
-      </SheetContent>
-    </Sheet>
-  )
-}
-
+import { Button } from "@/components/ui/button"
+import { Input } from "@/components/ui/input"
+import { LuMinus, LuPlus, LuTrash2 } from 'react-icons/lu';
 
 export const CartItem = (productdata) => {
   const {cartItems, addCartItem,removeFromCart,cartCount,cartTotal,doesItemExist,subtractCartItem} = useCart();
@@ -130,14 +30,14 @@ export const CartItem = (productdata) => {
 }
 
 export const CartItemActions = ({product, itemid}) => {
-  const {cartItems, addCartItem,removeFromCart,cartCount,cartTotal,doesItemExist,subtractCartItem} = useCart();
+  const {cartItems, addCartItem,removeFromCart,cartCount,cartTotal,doesItemExist,subtractCartItem,updateCartItemQuantity} = useCart();
   return (
     <div className=' grid grid-cols-4 place-items-center z-10' onClick={(e) => e.preventDefault()}>
       <Button variant="outline" size="icon" className="m-0 h-7 w-7 flex justify-center items-center" aria-label="Add to Cart" onClick={() => {subtractCartItem(product,1)}}>
         <LuMinus className='h-3 w-3'/>
         <span className='sr-only'>Noch ein Artikel hinzufügen</span>
       </Button>
-      <Input className="h-7 w-11 m-0" type='number' inputMode="numeric" min="1" max={cartItems[itemid].product.capacity} value={cartItems[itemid].quantity}/>
+      <Input className="h-7 w-11 m-0" type='number' inputMode="numeric" min="1" max={cartItems[itemid].product.capacity} value={cartItems[itemid].quantity} onChange={(e) => {updateCartItemQuantity(product,e.target.value)}}/>
       <Button variant="outline" size="icon" className="m-0 h-7 w-7" aria-label="Add to Cart" onClick={() => {addCartItem(product,1)}}>
         <LuPlus className='h-3 w-3'/>
         <span className='sr-only'>Ein Artikel entfernen</span>

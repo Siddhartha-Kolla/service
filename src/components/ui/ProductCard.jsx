@@ -9,7 +9,7 @@ import { LuPlus } from "react-icons/lu";
 import { useCart } from '@/context/cartContext';
 
 const ProductCardControls = ({product,itemid}) => {
-  const {cartItems, addCartItem,removeFromCart,cartCount,cartTotal,doesItemExist,subtractCartItem} = useCart();
+  const {cartItems, addCartItem,removeFromCart,cartCount,cartTotal,doesItemExist,subtractCartItem,updateCartItemQuantity} = useCart();
   const subtractCartItemfunc = (product, quantity,itemId) => {
     if (cartItems[itemId].quantity - quantity == 0) {
       removeFromCart(product)
@@ -28,7 +28,7 @@ const ProductCardControls = ({product,itemid}) => {
       </Button>
         )}
       {itemid >= 0 &&
-        (<Input className="h-7 w-11 m-0" type='number' inputMode="numeric" min="0" value={cartItems[itemid].quantity}/>)}
+        (<Input className="h-7 w-11 m-0" type='number' inputMode="numeric" min="0" value={cartItems[itemid].quantity} onChange={(e) => {updateCartItemQuantity(product,e.target.value)}}/>)}
       <Button variant="outline" size="icon" className="m-0 h-7 w-7" aria-label="Add to Cart" onClick={() => {addCartItem(product,1)}}>
         <LuPlus className='h-3 w-3'/>
         <span className='sr-only'>Von Warenkorb entfernen</span>
