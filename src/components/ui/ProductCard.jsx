@@ -40,7 +40,8 @@ const ProductCardControls = ({product,itemid}) => {
 
 const ProductCard = ({key,data,callfunc}) => {
   const {cartItems, addCartItem,removeFromCart,cartCount,cartTotal,doesItemExist,subtractCartItem} = useCart();
-  let currentItemindex = cartItems.findIndex((obj) => obj.product === data)
+  console.log(cartItems)
+  let currentItemindex = cartItems.findIndex((obj) => obj.product.id === data.id)
   const addIt = (product,quantity) => {
     addCartItem(product,quantity);
     console.log(cartItems)

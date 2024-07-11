@@ -20,10 +20,11 @@ export const useCart = () => {
 };
 
 export const CartProvider = ({children}) => {
-  const {isAuthenticated} = useAuth0();
+  const {isAuthenticated, user} = useAuth0();
   const [cartItems,setCartItems] = useState([]);
   const [cartInitialized,setCartInitialized] = useState(false);
   const [data, setData] = useState([]);
+  const [row, setRow] = useState({});
 
 
   const apiCall = (setData) => {
@@ -32,7 +33,7 @@ export const CartProvider = ({children}) => {
       const data = response.data.data;
       let pl = []
       for (let i=0;i<data.length;i++) {
-        pl.push({id:i,name:data[i].NAME,ppl:data[i].PPL,volume:data[i].VOLUME,first:data[i].FIRST,second:data[i].SECOND,third: data[i].THIRD,plastic:data[i].PLASTIC,glass:data[i].GLASS,image:data[i].IMAGE,category:data[i].CATEGORY,capacity:data[i].CAPACITY})
+        pl.push({id:data[i].ID,name:data[i].NAME,ppl:data[i].PPL,volume:data[i].VOLUME,first:data[i].FIRST,second:data[i].SECOND,third: data[i].THIRD,plastic:data[i].PLASTIC,glass:data[i].GLASS,image:data[i].IMAGE,category:data[i].CATEGORY,capacity:data[i].CAPACITY})
       }
       // let pla = []
       // for (let x=0;x<sorts.length;x++) {
@@ -49,8 +50,29 @@ export const CartProvider = ({children}) => {
   useEffect(() => {
     console.log("Loading the data")
     if (isAuthenticated) {
-      console.log("");
-    }
+      console.log("User logged in")
+      const { name, email } = user;
+      if (sessionStorage.getItem("userEmailCart") && JSON.parse(sessionStorage.getItem('userEmailCart')).user == name && JSON.parse(sessionStorage.getItem('userEmailCart')).email == email) {
+        let items = JSON.parse(sessionStorage.getItem('userEmailCart')).cartItems;
+        console.log("Items ",items)
+        setCartItems(items);
+        setCartInitialized(true)
+      }
+      else{
+        axios.get(`http://localhost:3001/cartItems/?user=${name}&email=${email}`).then((response) => {
+          const data = response.data.data;
+          console.log(data)
+          if (data) {
+            sessionStorage.setItem("userEmailCart",JSON.stringify(data));
+            setCartItems(JSON.parse(data.CARTITEMS))
+            setCartInitialized(true)
+          }
+          else {
+            setCartItems([])
+            setCartInitialized(true)
+          }
+        })
+      }}
     else {
       let items = localStorage.getItem('cartItems') ? JSON.parse(localStorage.getItem('cartItems')) : [];
       console.log("Items ",items)
@@ -61,9 +83,20 @@ export const CartProvider = ({children}) => {
   },[isAuthenticated])
 
   useEffect(() => {
-    if (!cartInitialized) {return}
-    console.log("Updating ",cartItems)
-    localStorage.setItem('cartItems', JSON.stringify(cartItems))
+    if (isAuthenticated) {
+      if (!cartInitialized) {return}
+      const { name, email } = user;
+      axios.post(`http://localhost:3001/cart/?user=${name}&email=${email}`,{
+        user: name,
+        email: email,
+        cartItems: cartItems
+      })
+    }
+    else {
+      if (!cartInitialized) {return}
+      console.log("Updating ",cartItems)
+      localStorage.setItem('cartItems', JSON.stringify(cartItems))
+    }
   },[cartItems])
   
   const addCartItem = (product, quantity) => {
