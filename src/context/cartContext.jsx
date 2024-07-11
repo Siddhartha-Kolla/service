@@ -48,20 +48,20 @@ export const CartProvider = ({children}) => {
     }, [])
   
   useEffect(() => {
-    console.log("Loading the data")
+    // console.log("Loading the data")
     if (isAuthenticated) {
-      console.log("User logged in")
+      // console.log("User logged in")
       const { name, email } = user;
       if (sessionStorage.getItem("userEmailCart") && JSON.parse(sessionStorage.getItem('userEmailCart')).user == name && JSON.parse(sessionStorage.getItem('userEmailCart')).email == email) {
         let items = JSON.parse(sessionStorage.getItem('userEmailCart')).cartItems;
-        console.log("Items ",items)
+        // console.log("Items ",items)
         setCartItems(items);
         setCartInitialized(true)
       }
       else{
         axios.get(`http://localhost:3001/cartItems/?user=${name}&email=${email}`).then((response) => {
           const data = response.data.data;
-          console.log(data)
+          // console.log(data)
           if (data) {
             sessionStorage.setItem("userEmailCart",JSON.stringify(data));
             setCartItems(JSON.parse(data.CARTITEMS))
@@ -75,7 +75,7 @@ export const CartProvider = ({children}) => {
       }}
     else {
       let items = localStorage.getItem('cartItems') ? JSON.parse(localStorage.getItem('cartItems')) : [];
-      console.log("Items ",items)
+      // console.log("Items ",items)
       setCartItems(items);
       setCartInitialized(true)
     }
@@ -94,7 +94,7 @@ export const CartProvider = ({children}) => {
     }
     else {
       if (!cartInitialized) {return}
-      console.log("Updating ",cartItems)
+      // console.log("Updating ",cartItems)
       localStorage.setItem('cartItems', JSON.stringify(cartItems))
     }
   },[cartItems])

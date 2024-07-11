@@ -1,11 +1,8 @@
 import React from 'react';
 import { Card, CardContent, CardFooter } from "@/components/ui/card";
-import { LuPlusSquare } from "react-icons/lu";
 import {Button} from "@/components/ui/button";
 import {Input} from "@/components/ui/input";
-import { LuMinusSquare } from "react-icons/lu";
-import { LuMinus } from "react-icons/lu";
-import { LuPlus } from "react-icons/lu";
+import { LuMinus, LuPlus } from "react-icons/lu";
 import { useCart } from '@/context/cartContext';
 
 const ProductCardControls = ({product,itemid}) => {
@@ -29,7 +26,7 @@ const ProductCardControls = ({product,itemid}) => {
         )}
       {itemid >= 0 &&
         (<Input className="h-7 w-11 m-0" type='number' inputMode="numeric" min="0" value={cartItems[itemid].quantity} onChange={(e) => {updateCartItemQuantity(product,e.target.value)}}/>)}
-      <Button variant="outline" size="icon" className="m-0 h-7 w-7" aria-label="Add to Cart" onClick={() => {addCartItem(product,1)}}>
+      <Button variant="outline" size="icon" className="m-0 h-7 w-7" aria-label="Add to Cart" onClick={() => {addCartItem(product,1);console.log(cartItems[itemid])}}>
         <LuPlus className='h-3 w-3'/>
         <span className='sr-only'>Von Warenkorb entfernen</span>
       </Button>
@@ -38,14 +35,9 @@ const ProductCardControls = ({product,itemid}) => {
 }
 
 
-const ProductCard = ({key,data,callfunc}) => {
-  const {cartItems, addCartItem,removeFromCart,cartCount,cartTotal,doesItemExist,subtractCartItem} = useCart();
-  console.log(cartItems)
+const ProductCard = ({data}) => {
+  const {cartItems} = useCart();
   let currentItemindex = cartItems.findIndex((obj) => obj.product.id === data.id)
-  const addIt = (product,quantity) => {
-    addCartItem(product,quantity);
-    console.log(cartItems)
-  }
   return (
     <a href="/" className="outline-0 focus:ring-2 hover:ring-2 ring-primary transition duration-300 rounded-lg z-[2]">
         <Card className="group rounded-lg border-2 h-full">
