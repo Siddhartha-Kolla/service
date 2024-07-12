@@ -4,6 +4,7 @@ import {Button} from "@/components/ui/button";
 import {Input} from "@/components/ui/input";
 import { LuMinus, LuPlus } from "react-icons/lu";
 import { useCart } from '@/context/cartContext';
+import {cn} from "@/lib/utils";
 
 const ProductCardControls = ({product,itemid}) => {
   const {cartItems, addCartItem,removeFromCart,cartCount,cartTotal,doesItemExist,subtractCartItem,updateCartItemQuantity} = useCart();
@@ -17,7 +18,7 @@ const ProductCardControls = ({product,itemid}) => {
 
   }
   return(
-    <div className=' grid grid-cols-3 place-items-center z-10' onClick={(e) => e.preventDefault()}>
+    <div className={cn('z-10',{"grid grid-cols-3 place-items-center": itemid >= 0,"grid grid-cols-1 place-items-center": !(itemid >= 0)})} onClick={(e) => e.preventDefault()}>
       {itemid >= 0 &&
       (<Button variant="outline" size="icon" className="m-0 h-7 w-7 flex justify-center items-center" aria-label="Add to Cart" onClick={() => {subtractCartItemfunc(product,1,itemid)}}>
         <LuMinus className='h-3 w-3'/>
@@ -25,7 +26,7 @@ const ProductCardControls = ({product,itemid}) => {
       </Button>
         )}
       {itemid >= 0 &&
-        (<Input className="h-7 w-11 m-0" type='number' inputMode="numeric" min="0" value={cartItems[itemid].quantity} onChange={(e) => {updateCartItemQuantity(product,e.target.value)}}/>)}
+        (<Input className="h-7 w-11 m-0 bg-white dark:bg-inherit" type='number' inputMode="numeric" min="0" value={cartItems[itemid].quantity} onChange={(e) => {updateCartItemQuantity(product,e.target.value)}}/>)}
       <Button variant="outline" size="icon" className="m-0 h-7 w-7" aria-label="Add to Cart" onClick={() => {addCartItem(product,1);console.log(cartItems[itemid])}}>
         <LuPlus className='h-3 w-3'/>
         <span className='sr-only'>Von Warenkorb entfernen</span>
@@ -39,15 +40,16 @@ const ProductCard = ({data}) => {
   const {cartItems} = useCart();
   let currentItemindex = cartItems.findIndex((obj) => obj.product.id === data.id)
   return (
-    <a href="/" className="outline-0 focus:ring-2 hover:ring-2 ring-primary transition duration-300 rounded-lg z-[2]">
+    <a className="outline-0 focus:ring-2 hover:ring-2 ring-primary transition duration-300 rounded-lg z-[2]">
         <Card className="group rounded-lg border-2 h-full">
           <CardContent className="pt-4">
-            <div className="aspect-square relative bg-foreground/5 dark:bg-background rounded-lg">
+            <div className="aspect-square relative bg-foreground/5 dark:bg-background rounded-lg grid grid-rows-1 grid-cols-1 justify-items-end">
               <img
                 src={`/img/${data.image}`}
                 alt=""
                 className="aspect-square object-cover rounded-lg transition-all duration-300 group-hover:scale-105"
               />
+                <ProductCardControls product={data} itemid={currentItemindex} className="z-[4]"/>
             </div>
           </CardContent>
           <CardFooter className="flex-col items-start">
@@ -59,7 +61,6 @@ const ProductCard = ({data}) => {
               <div>
                 {(data.ppl*data.volume).toFixed(2)}€
               </div>
-              <ProductCardControls product={data} itemid={currentItemindex}/>
             </div>
           </CardFooter>
         </Card>

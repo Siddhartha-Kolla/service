@@ -1,15 +1,11 @@
 import React from 'react';
 import Container from '@/components/ui/container'
 import {Button} from '@/components/ui/button'
-import { LuShoppingBag } from 'react-icons/lu';
 import ProductList from '@/components/ProductList';
 import { useState } from 'react';
 import { useEffect } from 'react';
-import axios from 'axios';
 import { useCart } from '../context/cartContext';
 import {cn} from "@/lib/utils";
-import { twMerge } from 'tailwind-merge';
-
 
 const CategoryComponent = ({sort,heroinfo}) => {
   const [productslist, setProductslist] = useState([])

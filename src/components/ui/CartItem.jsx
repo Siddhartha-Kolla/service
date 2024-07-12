@@ -5,7 +5,7 @@ import { Input } from "@/components/ui/input"
 import { LuMinus, LuPlus, LuTrash2 } from 'react-icons/lu';
 
 export const CartItem = (productdata) => {
-  const {cartItems, addCartItem,removeFromCart,cartCount,cartTotal,doesItemExist,subtractCartItem} = useCart();
+  const {cartItems,cartCount,cartTotal} = useCart();
   let cartitemdata = productdata.data
   let currentItemindex = cartItems.findIndex((obj) => obj.product === cartitemdata)
   return (

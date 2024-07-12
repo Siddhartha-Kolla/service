@@ -8,7 +8,8 @@ import Footer from './components/Footer.jsx';
 import { CartProvider } from './context/cartContext.jsx'
 import { Auth0Provider } from '@auth0/auth0-react';
 import { BrowserRouter as Router , Routes , Route } from 'react-router-dom';
-import Auth0ProviderWithNavigate from './auth/auth0-provider-with-history.jsx'
+import Auth0ProviderWithNavigate from './auth/auth0-provider-with-history.jsx';
+import ScrollButton from './components/ui/ScrollButton.jsx'
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
@@ -19,7 +20,8 @@ ReactDOM.createRoot(document.getElementById('root')).render(
         {/* <Header/> */}
         {window.location.pathname != "/editprofile" && (<Header/>)}
         <App/>
-        {window.location.pathname != "/editprofile" && (<Footer/>)}
+        <ScrollButton/>
+        {/* {window.location.pathname != "/editprofile" && (<Footer/>)} */}
       </ThemeProvider>
     </CartProvider>
     </Auth0ProviderWithNavigate>

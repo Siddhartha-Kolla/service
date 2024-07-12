@@ -2,13 +2,11 @@ import React from 'react';
 import Container from '@/components/ui/container'
 import {Button} from '@/components/ui/button'
 import { LuShoppingBag } from 'react-icons/lu';
-import ProductList from '@/components/ProductList'
 import ProductCarousel from '../components/ProductCarousel';
 import './homepage.css';
 import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 import { useEffect } from 'react';
-import axios from 'axios';
 import { useCart } from '../context/cartContext';
 
 const heroinfo = {

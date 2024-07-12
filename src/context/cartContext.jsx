@@ -29,16 +29,11 @@ export const CartProvider = ({children}) => {
 
   const apiCall = (setData) => {
     axios.get('http://localhost:3001/all').then((response) => {
-      //this console.log will be in our frontend console
       const data = response.data.data;
       let pl = []
       for (let i=0;i<data.length;i++) {
         pl.push({id:data[i].ID,name:data[i].NAME,ppl:data[i].PPL,volume:data[i].VOLUME,first:data[i].FIRST,second:data[i].SECOND,third: data[i].THIRD,plastic:data[i].PLASTIC,glass:data[i].GLASS,image:data[i].IMAGE,category:data[i].CATEGORY,capacity:data[i].CAPACITY})
       }
-      // let pla = []
-      // for (let x=0;x<sorts.length;x++) {
-      //   pla.push(pl.filter(product => product.category === sorts[x]))
-      // }
       setData(pl)
     })
   }

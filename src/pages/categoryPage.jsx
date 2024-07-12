@@ -3,20 +3,6 @@ import { useParams } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 import CategoryComponent from './categoryPageLayout';
 
-const heroinfo = {
-  heroimg: "/img/wein_hintergrund.jpg",
-  heroimgClass: "",
-  title: "Wein",
-  titleClass: "text-white",
-  button: false,
-  butIcon: null,
-  butTitle: null,
-  butClass: "hidden",
-  butHref: ""
-  
-}
-
-
 const heroinfos = [
   {category: "water",heroimg: "/img/wasser_hintergrund.jpg",heroimgClass: "",title: "Wasser",titleClass: "",button: false,butIcon: null,butTitle: null,butClass: "hidden",butHref: ""},
   {category: "softdrinks",heroimg: "/img/softdrinks_hintergrund.png",heroimgClass: "",title: "Softdrinks",titleClass: "",button: false,butIcon: null,butTitle: null,butClass: "hidden",butHref: ""},
