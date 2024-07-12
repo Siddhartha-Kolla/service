@@ -1,11 +1,5 @@
 import { useState } from 'react'
 import './App.css'
-import Water from './pages/water'
-import Juice from './pages/juice';
-import Drink from './pages/drink';
-import Warm from './pages/warm';
-import Beer from './pages/beer';
-import Wine from './pages/wine';
 import HomePage from './pages/homepage';
 import NotFound from './pages/NotFound';
 import LoginForm from './pages/login';
