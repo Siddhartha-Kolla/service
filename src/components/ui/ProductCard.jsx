@@ -40,8 +40,8 @@ const ProductCard = ({data}) => {
   const {cartItems} = useCart();
   let currentItemindex = cartItems.findIndex((obj) => obj.product.id === data.id)
   return (
-    <a className="outline-0 focus:ring-2 hover:ring-2 ring-primary transition duration-300 rounded-lg z-[2]">
-        <Card className="group rounded-lg border-2 h-full">
+    <a>
+        <Card className="group rounded-lg border-2 h-full outline-0 focus:ring-2 hover:ring-2 ring-primary transition duration-300">
           <CardContent className="pt-4">
             <div className="aspect-square relative bg-foreground/5 dark:bg-background rounded-lg grid grid-rows-1 grid-cols-1 justify-items-end">
               <img

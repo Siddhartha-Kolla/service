@@ -21,6 +21,7 @@ import { Label } from "@/components/ui/label";
 import './Header.css';
 import { CartSheet } from './CartSheet';
 import SearchComponent from './SearchComponent'
+import {cn} from "@/lib/utils"
 
 
 const components = [
@@ -105,9 +106,9 @@ const MobileHeaderVersion = () => {
         <LuMenu className="h-6 md:hidden w-6" />
       </SheetTrigger>
       <SheetContent side="left" className="w-[300px] sm:w-[400px]">
-      <NavigationMenu className="mx-6 flex items-center space-x-4-lg:space-x-6 md:hidden flex-grow">
-        <NavigationMenuList className=" flex flex-col flex-grow w-full">
-          <NavigationMenuItem>
+      <NavigationMenu className="mx-6 mt-10 space-x-4-lg:space-x-6 md:hidden">
+        <NavigationMenuList className="grid grid-rows-3 gap-5">
+          <NavigationMenuItem className="w-full">
             <NavigationMenuTrigger>Kategorien</NavigationMenuTrigger>
             <NavigationMenuContent>
               <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px]">
@@ -126,8 +127,8 @@ const MobileHeaderVersion = () => {
               </ul>
             </NavigationMenuContent>
           </NavigationMenuItem>
-          <NavigationMenuItem>
-            <NavigationMenuLink asChild className={navigationMenuTriggerStyle()}>
+          <NavigationMenuItem className="w-full">
+            <NavigationMenuLink asChild className={cn(navigationMenuTriggerStyle(),"w-full")}>
               <a
                 href="/"
                 className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground"
@@ -137,7 +138,7 @@ const MobileHeaderVersion = () => {
             </NavigationMenuLink>
           </NavigationMenuItem>
           <NavigationMenuItem>
-            <NavigationMenuLink asChild className={navigationMenuTriggerStyle()}>
+            <NavigationMenuLink asChild className={cn(navigationMenuTriggerStyle(),"w-full")}>
               <a
                 href="/"
                 className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground"
