@@ -100,7 +100,7 @@ export const CartProvider = ({children}) => {
   },[cartItems])
   
   const addCartItem = (product, quantity) => {
-    const existingCartItemIndex = cartItems.findIndex((obj) => obj.product === product);
+    const existingCartItemIndex = cartItems.findIndex((obj) => obj.product.id === product.id);
     if (existingCartItemIndex !== -1) {
       const existingCartItem = cartItems[existingCartItemIndex];
       let tobeChangedQuantity = existingCartItem.quantity
@@ -123,7 +123,7 @@ export const CartProvider = ({children}) => {
   };
 
 	const subtractCartItem = (product, quantity) => {
-    const existingCartItemIndex = cartItems.findIndex((obj) => obj.product === product);
+    const existingCartItemIndex = cartItems.findIndex((obj) => obj.product.id === product.id);
     if (existingCartItemIndex !== -1) {
 			if (cartItems[existingCartItemIndex].quantity > 1) {
 				const existingCartItem = cartItems[existingCartItemIndex];
@@ -140,7 +140,7 @@ export const CartProvider = ({children}) => {
   };
 
   const updateCartItemQuantity = (product,quantity) => {
-    const existingCartItemIndex = cartItems.findIndex((obj) => obj.product === product);
+    const existingCartItemIndex = cartItems.findIndex((obj) => obj.product.id === product.id);
     if (existingCartItemIndex !== -1) {
       const existingCartItem = cartItems[existingCartItemIndex];
       let tobeChangedQuantity = existingCartItem.quantity
@@ -163,14 +163,14 @@ export const CartProvider = ({children}) => {
 
 	const removeFromCart = (product) => {
     const updatedCartItems = cartItems.filter(
-      (item) => item.product !== product
+      (item) => item.product.id !== product.id
     );
     setCartItems(updatedCartItems);
   };
 
 	const doesItemExist = (product) => {
 		// const existingCartItemIndexy = cartItems.findIndex((obj) => obj.product.name === product.name);
-		const existingCartItem = cartItems.some((obj) => obj.product.name === product.name);
+		const existingCartItem = cartItems.some((obj) => obj.product.id === product.id);
 		return existingCartItem;
 	}
 

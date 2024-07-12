@@ -16,7 +16,7 @@ const heroinfo = {
   heroimg: "/img/summer-refresh.jpg",
   butTitle: "Jetzt kaufen",
   butIcon: <LuShoppingBag className='mr-2'/>,
-  butHref: "/juice",
+  butHref: "/category/juice",
 }
 
 const sorts = ["water","softdrinks","beer","juice","warm","wine"]

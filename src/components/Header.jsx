@@ -45,26 +45,26 @@ import {
 const components = [
   {
     title: "Wasser",
-    href: "/water",
+    href: "/category/water",
   },
   {
     title: "Saft",
-    href: "/juice",
+    href: "/category/juice",
   },
   {
     title: "Softdrinks",
-    href: "/drink",
+    href: "/category/softdrinks",
   },
   {
     title: "warme Getränke",
-    href: "/warm",},
+    href: "/category/warm",},
   {
     title: "Bier",
-    href: "/beer",
+    href: "/category/beer",
   },
   {
     title: "Wein",
-    href: "/wine",
+    href: "/category/wine",
   },
   
 ]
