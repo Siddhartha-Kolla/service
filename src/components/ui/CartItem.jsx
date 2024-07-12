@@ -7,7 +7,7 @@ import { LuMinus, LuPlus, LuTrash2 } from 'react-icons/lu';
 export const CartItem = (productdata) => {
   const {cartItems,cartCount,cartTotal} = useCart();
   let cartitemdata = productdata.data
-  let currentItemindex = cartItems.findIndex((obj) => obj.product === cartitemdata)
+  let currentItemindex = cartItems.findIndex((obj) => obj.product.id === cartitemdata.id)
   return (
     <div className='flex items-center inter-fonts-use border'>
       <div className='relative h-24 w-24 overflow-hidden rounded'>

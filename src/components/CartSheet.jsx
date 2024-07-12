@@ -51,7 +51,7 @@ export function CartSheet() {
             {cartItems &&
               <div className="flex flex-col gap-5 pr-6">
               {cartItems.map((item,ind) => (
-                <CartItem data={item.product} key={ind}/>
+                <CartItem data={item.product} key={item.product.id}/>
               ))}
             </div>}
           </ScrollArea>
