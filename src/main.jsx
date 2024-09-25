@@ -18,7 +18,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
     <CartProvider>
       <ThemeProvider attribute="class" defaultTheme="light">
         {/* <Header/> */}
-        {window.location.pathname != "/editprofile" && (<Header/>)}
+        {/* {(window.location.pathname != "/editprofile" && window.location.pathname != "/sale") && (<Header/>)} */}
         <App/>
         <ScrollButton/>
         {/* {window.location.pathname != "/editprofile" && (<Footer/>)} */}

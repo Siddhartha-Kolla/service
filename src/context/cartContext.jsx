@@ -12,7 +12,8 @@ const CartContext = createContext({
   doesItemExist: () => {},
   subtractCartItem: () => {},
   updateCartItemQuantity: () => {},
-  data: []
+  data: [],
+  isloaded: false
 })
 
 export const useCart = () => {
@@ -24,8 +25,7 @@ export const CartProvider = ({children}) => {
   const [cartItems,setCartItems] = useState([]);
   const [cartInitialized,setCartInitialized] = useState(false);
   const [data, setData] = useState([]);
-  const [row, setRow] = useState({});
-
+  const [isloaded,setisLoaded] = useState(false);
 
   const apiCall = (setData) => {
     axios.get('http://localhost:3001/all').then((response) => {
@@ -34,7 +34,8 @@ export const CartProvider = ({children}) => {
       for (let i=0;i<data.length;i++) {
         pl.push({id:data[i].ID,name:data[i].NAME,ppl:data[i].PPL,volume:data[i].VOLUME,first:data[i].FIRST,second:data[i].SECOND,third: data[i].THIRD,plastic:data[i].PLASTIC,glass:data[i].GLASS,image:data[i].IMAGE,category:data[i].CATEGORY,capacity:data[i].CAPACITY})
       }
-      setData(pl)
+      setData(pl);
+      setisLoaded(true)
     })
   }
 
@@ -185,7 +186,8 @@ export const CartProvider = ({children}) => {
 				doesItemExist,
 				subtractCartItem,
         updateCartItemQuantity,
-        data
+        data,
+        isloaded
       }}
     >
       {children}

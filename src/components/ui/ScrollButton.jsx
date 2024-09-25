@@ -28,7 +28,7 @@ const ScrollButton = () =>{
   window.addEventListener('scroll', toggleVisible); 
   
   return ( 
-    <Button variant="ghost" size="icon" className={cn(" rounded-full mr-2 fixed bottom-8 right-8",{"hidden":!visible})} aria-label="Shopping Cart" onClick={scrollToTop}>
+    <Button variant="ghost" size="icon" className={cn(" rounded-full mr-2 fixed bottom-8 right-8 hidden",{"md:inline-flex":visible})} aria-label="Shopping Cart" onClick={scrollToTop}>
       <LuArrowUpCircle className='h-8 w-8'/>
       <span className=' sr-only'>Warenkorb</span>
     </Button>
